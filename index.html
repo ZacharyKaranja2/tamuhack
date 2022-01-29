@@ -1,6 +1,91 @@
 <!DOCTYPE html>
-<html lang="en">
-    <p>
-        Test
-    </p>
+<html>
+<body style="background-color:powderblue;">
+<head>
+<title>Find Your Flight</title>
+</head>
+<body>
+<html>
+<head>
+<style>
+div {
+  padding: 8px;
+}
+
+h1 {
+  text-align: center;
+  text-transform: uppercase;
+  color: #ca2626;
+}
+
+p {
+  text-indent: 50px;
+  text-align: justify;
+  letter-spacing: 3px;
+}
+
+a {
+  text-decoration: none;
+  color: #008CBA;
+}
+</style>
+</head>
+<body>
+
+<div>
+  <h1>American Airlines</h1>
+  <p>This text is styled with some of the text formatting properties. The heading uses the text-align, text-transform, and color properties.
+  The paragraph is indented, aligned, and the space between characters is specified. The underline is removed from this colored
+  <a target="_blank" href="tryit.asp?filename=trycss_text">"Try it Yourself"</a> link.</p>
+</div>
+
+</p>
+
+<html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+h2 {
+    text-align: center
+}
+
+td, th {
+  border: 1px solid #000000;
+  border-left: none;
+  border-right: none;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #b6d6ff;
+}
+</style>
+</head>
+<body>
+
+
+
+<h2>Flights</h2>
+
+<table id='airports'>
+  <tr>
+    <th>Code</th>
+    <th>City</th>
+    <th>State</th>
+    <th>Timezone</th>
+    <th>Latitude</th>
+    <th>Longitude</th>
+  </tr>
+  <script src='allAirports.js'></script>
+  
+
+</table>
+
+</body>
 </html>
