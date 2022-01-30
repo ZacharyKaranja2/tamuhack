@@ -1,6 +1,6 @@
-function sortbyColumn(column) {
+function sortbyColumn(origin, column) {
   clearTable();
-  getFlightsOnDay("", "", "", column);
+  getFlightsOnDay("", origin, column);
 }
 
 function clearTable() {
@@ -8,8 +8,6 @@ function clearTable() {
   children_ =  Array.from(element.children)
   children_.forEach(child => child.remove())
 }
-
-var flightData;
 
 function createFlightTable(data=flightData, sortingMethod, ascending=true, element) {
   switch(sortingMethod) {
@@ -38,23 +36,18 @@ function createFlightTable(data=flightData, sortingMethod, ascending=true, eleme
     default:
       break
   }
-
-  if (!ascending) {
-    data = data.reverse()
-  }
   
   children_ =  Array.from(element.children)
   children_.forEach(child => child.remove())
   
   headerList = ["Flight Number", "Origin", "Destination", "Distance", "Duration", "Departure Time", "Arrival Time"]
   
+  console.log(data[0].origin.code)
   headerRow = element.insertRow()
   headerList.forEach(title => {
-    console.log(title)
     cell = headerRow.insertCell()
     cell.innerHTML = title
-    cell.setAttribute("tag","th")
-    cell.setAttribute("onClick", `sortbyColumn('${title}')`)
+    cell.setAttribute("onClick", "sortbyColumn(" + `'${data[0].origin.code}','${title}'`+")")
   })
 
   data.forEach(flight => {
@@ -86,19 +79,17 @@ function createFlightTable(data=flightData, sortingMethod, ascending=true, eleme
 
 }
 
-function getFlightsOnDay(date="", origin="", destination="", sortingMethod) {
-  date = "2021-01-30"
-  origin = "DFW"
-  destination = "JFK"
+function getFlightsOnDay(date="", origin="DFW", sortingMethod) {
+  date = new Date().toISOString().slice(0, 10)
+  console.log(origin)
   var request = new XMLHttpRequest()
   
-  request.open('GET', `https://american-airlines-tamuhack.herokuapp.com/flights?date=1111-11-11&origin=DFW`, true)
+  request.open('GET', `https://american-airlines-tamuhack.herokuapp.com/flights?date=${date}&origin=${origin}`, true)
   request.onload = function () {
     // Begin accessing JSON data here
     var data = JSON.parse(this.response)
 
     if (request.status >= 200 && request.status < 400) {
-      console.log(data)
       element = document.getElementById("airports")
 
       createFlightTable(data, sortingMethod, true, element)
