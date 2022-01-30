@@ -42,13 +42,7 @@ function createFlightTable(data=flightData, sortingMethod, ascending=true, eleme
   if (!ascending) {
     data = data.reverse()
   }
-  //data.sort((a,b)=> (a.flightNumber > b.flightNumber ? 1 : -1))
-  /*<th onclick="sortbyColumn('flightNumber')">Code</th>
-    <th>City</th>
-    <th>State</th>
-    <th>Timezone</th>
-    <th>Latitude</th>
-    <th>Longitude</th>*/
+  
   children_ =  Array.from(element.children)
   children_.forEach(child => child.remove())
   
@@ -88,9 +82,6 @@ function createFlightTable(data=flightData, sortingMethod, ascending=true, eleme
         arrivalTime = row.insertCell(6)
         date = new Date(flight.arrivalTime)
         arrivalTime.innerHTML = date
-
-        
-        //element.insertRow(row)
     })
 
 }
