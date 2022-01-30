@@ -26,7 +26,7 @@
             latitude = row.insertCell(4)
             latitude.innerHTML = airport.location.latitude
 
-            longitude = row.insertCell(4)
+            longitude = row.insertCell(5)
             longitude.innerHTML = airport.location.longitude
 
             
