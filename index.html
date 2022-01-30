@@ -7,6 +7,9 @@
 <body>
 <html>
 <head>
+
+  <script src="allAirports.js" charset="utf-8"></script>
+  <script src="flightsOnDay.js" charset="utf-8"></script>
 <style>
 div {
   padding: 8px;
@@ -74,17 +77,21 @@ tr:nth-child(even) {
 <h2>Flights</h2>
 
 <table id='airports'>
+ 
   <tr>
-    <th>Code</th>
+    <th onclick="sortbyColumn('flightNumber')">Code</th>
     <th>City</th>
     <th>State</th>
     <th>Timezone</th>
     <th>Latitude</th>
     <th>Longitude</th>
   </tr>
-  <script src='allAirports.js'></script>
+  <script>
+    getFlightsOnDay("1111-11-11", "DFW", "JFK", "")
+  </script>
   
-
+  
+  
 </table>
 
 </body>
