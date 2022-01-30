@@ -1,98 +1,254 @@
 <!DOCTYPE html>
 <html>
-<body style="background-color:powderblue;">
 <head>
-<title>Find Your Flight</title>
+    <meta charset="utf-8">
+
+    <title>MAP</title>
+
+    <style type="text/css">
+
+        html {
+            background-color: #CDDEE0;
+        }
+
+        body {
+            color: #5d5d5d;
+            font-family: Helvetica, Arial, sans-serif;
+        }
+
+        h1 {
+            font-size: 30px;
+            margin: auto;
+            margin-top: 50px;
+        }
+
+        .container {
+            max-width: 1450px;
+            margin: auto;
+        }
+
+        /* Specific mapael css class are below
+         * 'mapael' class is added by plugin
+        */
+
+        .mapael .map {
+            position: relative;
+            background-color:#cddee0;
+            margin-bottom:10px;
+        }
+
+        .mapael .mapTooltip {
+            position: absolute;
+            background-color: #474c4b;
+            moz-opacity: 0.70;
+            opacity: 0.70;
+            filter: alpha(opacity=70);
+            border-radius: 10px;
+            padding: 10px;
+            z-index: 1000;
+            max-width: 200px;
+            display: none;
+            color: #fff;
+        }
+    </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"
+            charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js" charset="utf-8"></script>
+    <script src="jQuery-Mapael-2.2.0/js/jquery.mapael.js" charset="utf-8"></script>
+    <script src="jQuery-Mapael-2.2.0/js/maps/france_departments.js" charset="utf-8"></script>
+    <script src="jQuery-Mapael-2.2.0/js/maps/world_countries.js" charset="utf-8"></script>
+    <script src="jQuery-Mapael-2.2.0/js/maps/usa_states.js" charset="utf-8"></script>
+
+
+
+
+    <script src="javascript.js" charset="utf-8"></script>
+
 </head>
-<body>
-<html>
-<head>
-
-  <script src="allAirports.js" charset="utf-8"></script>
-  <script src="flightsOnDay.js" charset="utf-8"></script>
-<style>
-div {
-  padding: 8px;
-}
-
-h1 {
-  text-align: center;
-  text-transform: uppercase;
-  color: #ca2626;
-}
-
-p {
-  text-indent: 50px;
-  text-align: justify;
-  letter-spacing: 3px;
-}
-
-a {
-  text-decoration: none;
-  color: #008CBA;
-}
-</style>
-</head>
-<body>
-
-<div>
-  <h1>American Airlines</h1>
-  <p>This text is styled with some of the text formatting properties. The heading uses the text-align, text-transform, and color properties.
-  The paragraph is indented, aligned, and the space between characters is specified. The underline is removed from this colored
-  <a target="_blank" href="tryit.asp?filename=trycss_text">"Try it Yourself"</a> link.</p>
-</div>
-
-</p>
-
-<html>
-<head>
-<style>
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
-
-h2 {
-    text-align: center
-}
-
-td, th {
-  border: 1px solid #000000;
-  border-left: none;
-  border-right: none;
-  text-align: left;
-  padding: 8px;
-}
-
-tr:nth-child(even) {
-  background-color: #b6d6ff;
-}
-</style>
-</head>
-<body>
 
 
 
-<h2>Flights</h2>
 
-<table id='airports'>
- 
-  <tr>
-    <th onclick="sortbyColumn('flightNumber')">Code</th>
-    <th>City</th>
-    <th>State</th>
-    <th>Timezone</th>
-    <th>Latitude</th>
-    <th>Longitude</th>
-  </tr>
-  <script>
-    getFlightsOnDay("1111-11-11", "DFW", "JFK", "")
-  </script>
-  
-  
-  
-</table>
+
+<body onload="mainMap()">
+    <div class="container">
+
+        <div class="mapcontainer">
+
+            <div class="map">
+                <span>alt</span>
+            </div>
+
+
+            <!-- <div class="plotLegend">
+                <span>alt legend</span>
+            </div> -->
+
+        </div>
+
+    </div>
 
 </body>
+
+<body>
+    <head>
+    <title>Find Your Flight</title>
+    </head>
+    <body>
+    <html>
+    <head>
+    
+    <style>
+    div {
+      padding: 8px;
+    }
+    
+    h1 {
+      text-align: center;
+      text-transform: uppercase;
+      color: #ca2626;
+    }
+    
+    p {
+      text-indent: 50px;
+      text-align: justify;
+      letter-spacing: 3px;
+    }
+    
+    a {
+      text-decoration: none;
+      color: #008CBA;
+    }
+    </style>
+    </head>
+
+
+    <script src="allAirports.js" charset="utf-8"></script>
+    <script src="flightsOnDay.js" charset="utf-8"></script>
+    <body onload="loadclick()">
+       
+    </p>
+    
+    <html>
+    <head>
+    <style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    h2 {
+        text-align: center
+    }
+    
+    td, th {
+      border: 1px solid #000000;
+      border-left: none;
+      border-right: none;
+      text-align: left;
+      padding: 8px;
+    }
+    
+    tr:nth-child(even) {
+      background-color: #b6d6ff;
+    }
+    </style>
+    </head>
+    <body>
+    
+    
+    
+    <h2>Flights</h2>
+    
+    <table id='airports'>
+     
+      <tr>
+        <th onclick="sortbyColumn('flightNumber')">Code</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Timezone</th>
+        <th>Latitude</th>
+        <th>Longitude</th>
+      </tr>
+      <script>
+        getFlightsOnDay("", "DFW", "")
+      </script>
+      
+      
+      
+    </table>
+    
+    </body>
+
+    <pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </pre>
+
 </html>
